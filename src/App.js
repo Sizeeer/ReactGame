@@ -1,11 +1,11 @@
+import "./App.css";
+
 import { Header } from "./components/Header";
 import { Slider } from "./components/Slider";
 import { Footer } from "./components/Footer";
 import { Container } from "./components/Container";
 import { Heading } from "./components/Heading";
 import { Text } from "./components/Text";
-
-import "./App.css";
 
 function App() {
   return (

@@ -3,7 +3,14 @@ import PropTypes from "prop-types";
 import cn from "classnames";
 import styles from "./Text.module.css";
 
-const Text = ({ element, children, className, strong, italic, disabled }) => {
+const Text = ({
+  element = "span",
+  children,
+  className,
+  strong,
+  italic,
+  disabled,
+}) => {
   return React.createElement(
     element,
     {

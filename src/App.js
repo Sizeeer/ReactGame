@@ -16,6 +16,32 @@ function App() {
         <Heading level={4}>Это хединг</Heading>
         <Text element="div">Это текст</Text>
       </Container>
+      <Container className="wrapper">
+        <Heading level={4}>Это хединг</Heading>
+        <Text element="div">Это текст</Text>
+      </Container>
+      <Container className="wrapper">
+        <Heading level={4}>Это хединг</Heading>
+        <Text element="div">Это текст</Text>
+      </Container>
+      <Container className="wrapper">
+        <Heading level={4}>Это хединг</Heading>
+        <Text element="div">Это текст</Text>
+      </Container>
+      <Container className="wrapper">
+        <Heading level={4}>Это хединг</Heading>
+        <Text element="div">Это текст</Text>
+        <Heading level={4}>Это хединг</Heading>
+        <Text element="div">Это текст</Text>
+        <Heading level={4}>Это хединг</Heading>
+        <Text element="div">Это текст</Text>
+        <Heading level={4}>Это хединг</Heading>
+        <Text element="div">Это текст</Text>
+        <Heading level={4}>Это хединг</Heading>
+        <Text element="div">Это текст</Text>
+        <Heading level={4}>Это хединг</Heading>
+        <Text element="div">Это текст</Text>
+      </Container>
       <Footer />
     </>
   );

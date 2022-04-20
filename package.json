@@ -38,6 +38,7 @@
     ]
   },
   "devDependencies": {
+    "fs": "0.0.1-security",
     "prop-types": "^15.8.1"
   }
 }

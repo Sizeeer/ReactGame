@@ -8,6 +8,7 @@ import { Heading } from "./components/Heading";
 
 import { useCallback, useState } from "react";
 import { CharacterCard } from "./components/CharacterCard/CharacterCard";
+import { Biography } from "./pages/Biography/Biography";
 
 const CHARACTERS = [
   {
@@ -80,6 +81,7 @@ const CHARACTERS = [
 
 function App() {
   const [characters, setCharacters] = useState(CHARACTERS);
+  const [currentCharacterId, setCurrentCharacterId] = useState(null);
 
   const onLikeCard = useCallback((id) => {
     setCharacters((prev) =>
@@ -91,32 +93,47 @@ function App() {
     );
   }, []);
 
+  const onBackClick = useCallback(() => {
+    setCurrentCharacterId(null);
+  }, []);
+
+  const onGoToBiography = useCallback((id) => {
+    setCurrentCharacterId(id);
+  }, []);
+
   return (
     <>
       <Header />
-      <Slider />
-      <section className={styles.cardSection}>
-        <Container>
-          <div className={styles.cardTitle}>
-            <Heading backLine>Marvel cards</Heading>
-            <Heading level={2}>Collect your est five</Heading>
-          </div>
-          <div className={styles.cardWrapper}>
-            {characters.map((el) => (
-              <CharacterCard
-                key={el.id}
-                id={el.id}
-                name={el.name}
-                description={el.description}
-                path={el.thumbnail.path}
-                humanName={el.humanName}
-                isLike={el.isLike}
-                onLikeCard={onLikeCard}
-              />
-            ))}
-          </div>
-        </Container>
-      </section>
+      {currentCharacterId ? (
+        <Biography id={currentCharacterId} onBackClick={onBackClick} />
+      ) : (
+        <>
+          <Slider />
+          <section className={styles.cardSection}>
+            <Container>
+              <div className={styles.cardTitle}>
+                <Heading backLine>Marvel cards</Heading>
+                <Heading level={2}>Collect your est five</Heading>
+              </div>
+              <div className={styles.cardWrapper}>
+                {characters.map((el) => (
+                  <CharacterCard
+                    key={el.id}
+                    id={el.id}
+                    name={el.name}
+                    description={el.description}
+                    path={el.thumbnail.path}
+                    humanName={el.humanName}
+                    isLike={el.isLike}
+                    onLikeCard={onLikeCard}
+                    onGoToBiography={onGoToBiography}
+                  />
+                ))}
+              </div>
+            </Container>
+          </section>
+        </>
+      )}
 
       <Footer />
     </>

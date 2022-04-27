@@ -14,6 +14,7 @@ export const CharacterCard = ({
   humanName,
   isLike,
   onLikeCard,
+  onGoToBiography,
 }) => {
   const handleLike = () => {
     onLikeCard(id);
@@ -41,7 +42,9 @@ export const CharacterCard = ({
             <Like />
           </div>
           <div className={styles.readBio}>
-            <a href="#">Read bio</a>
+            <a href="#" onClick={() => onGoToBiography(id)}>
+              Read bio
+            </a>
           </div>
         </div>
       </div>
@@ -57,4 +60,5 @@ CharacterCard.propTypes = {
   humanName: PropTypes.string,
   isLike: PropTypes.bool,
   onLikeCard: PropTypes.func,
+  onGoToBiography: PropTypes.func,
 };

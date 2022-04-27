@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import styles from "./Header.module.scss";
 import logoSrc from "../../assets/logo.png";
 import { Container } from "../Container";

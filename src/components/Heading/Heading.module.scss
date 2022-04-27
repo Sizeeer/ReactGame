@@ -4,6 +4,17 @@
   color: #000000d9;
   margin: 0;
   padding: 0;
+
+  &.backline {
+    &::after {
+      content: "";
+      display: block;
+      width: 30%;
+      position: relative;
+      border-bottom: 1px solid #aaa;
+      margin: 15px auto 0;
+    }
+  }
 }
 
 .level1 {

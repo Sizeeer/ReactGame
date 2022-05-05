@@ -9,6 +9,9 @@ import { Heading } from "./components/Heading";
 import { useCallback, useState } from "react";
 import { CharacterCard } from "./components/CharacterCard/CharacterCard";
 import { Biography } from "./pages/Biography/Biography";
+import { Route, Routes } from "react-router-dom";
+import { Layout } from "./components/Layout";
+import { Characters } from "./pages/Characters";
 
 const CHARACTERS = [
   {
@@ -102,7 +105,12 @@ function App() {
   }, []);
 
   return (
-    <>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Main />} />
+        <Route path="characters" element={<Characters />} />
+        <Route path="about" element={<Main />} />
+      </Route>
       <Header />
       {currentCharacterId ? (
         <Biography id={currentCharacterId} onBackClick={onBackClick} />
@@ -136,7 +144,7 @@ function App() {
       )}
 
       <Footer />
-    </>
+    </Routes>
   );
 }
 

@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Slider.module.scss";
 import cn from "classnames";
+import { Button } from "../Button/Button";
 
 export const Slider = () => {
   return (
@@ -10,7 +11,7 @@ export const Slider = () => {
           <h1 className={styles.header}>Wow</h1>
           <h2 className={styles.subheader}>Wow.Wow.Wow</h2>
           <div className={styles.call}>
-            <button className={styles.button}>Wow</button>
+            <Button />
           </div>
         </div>
       </div>

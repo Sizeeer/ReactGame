@@ -1,0 +1,22 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 8px 13px;
+  font-size: 20px;
+  transition: background 0.15s linear;
+
+  &.goBack {
+    color: #000;
+    border: 1px solid #000;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+  }
+}

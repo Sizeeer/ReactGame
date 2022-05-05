@@ -8,6 +8,9 @@ import { Heading } from "./components/Heading";
 
 import { useCallback, useState } from "react";
 import { CharacterCard } from "./components/CharacterCard/CharacterCard";
+import { Route, Routes } from "react-router-dom";
+import { Main } from "./pages/Main";
+import { Layout } from "./components/Layout";
 
 const CHARACTERS = [
   {
@@ -92,8 +95,16 @@ function App() {
   }, []);
 
   return (
-    <>
-      <Header />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Main />} />
+          <Route path="bio" element={<Biography />} />
+          <Route path="characters/:id" element={<Biography />} />
+          <Route path="about" element={<Biography />} />
+          <Route path="contacts" element={<Biography />} />
+        </Route>
+      </Routes>
+
       <Slider />
       <section className={styles.cardSection}>
         <Container>
@@ -117,9 +128,6 @@ function App() {
           </div>
         </Container>
       </section>
-
-      <Footer />
-    </>
   );
 }
 

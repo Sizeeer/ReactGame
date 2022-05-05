@@ -8,9 +8,7 @@ import { Heading } from "./components/Heading";
 
 import { useCallback, useState } from "react";
 import { CharacterCard } from "./components/CharacterCard/CharacterCard";
-import { Route, Routes } from "react-router-dom";
-import { Main } from "./pages/Main";
-import { Layout } from "./components/Layout";
+import { Biography } from "./pages/Biography/Biography";
 
 const CHARACTERS = [
   {
@@ -83,6 +81,7 @@ const CHARACTERS = [
 
 function App() {
   const [characters, setCharacters] = useState(CHARACTERS);
+  const [currentCharacterId, setCurrentCharacterId] = useState(null);
 
   const onLikeCard = useCallback((id) => {
     setCharacters((prev) =>
@@ -94,40 +93,50 @@ function App() {
     );
   }, []);
 
-  return (
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Main />} />
-          <Route path="bio" element={<Biography />} />
-          <Route path="characters/:id" element={<Biography />} />
-          <Route path="about" element={<Biography />} />
-          <Route path="contacts" element={<Biography />} />
-        </Route>
-      </Routes>
+  const onBackClick = useCallback(() => {
+    setCurrentCharacterId(null);
+  }, []);
 
-      <Slider />
-      <section className={styles.cardSection}>
-        <Container>
-          <div className={styles.cardTitle}>
-            <Heading backLine>Marvel cards</Heading>
-            <Heading level={2}>Collect your est five</Heading>
-          </div>
-          <div className={styles.cardWrapper}>
-            {characters.map((el) => (
-              <CharacterCard
-                key={el.id}
-                id={el.id}
-                name={el.name}
-                description={el.description}
-                path={el.thumbnail.path}
-                humanName={el.humanName}
-                isLike={el.isLike}
-                onLikeCard={onLikeCard}
-              />
-            ))}
-          </div>
-        </Container>
-      </section>
+  const onGoToBiography = useCallback((id) => {
+    setCurrentCharacterId(id);
+  }, []);
+
+  return (
+    <>
+      <Header />
+      {currentCharacterId ? (
+        <Biography id={currentCharacterId} onBackClick={onBackClick} />
+      ) : (
+        <>
+          <Slider />
+          <section className={styles.cardSection}>
+            <Container>
+              <div className={styles.cardTitle}>
+                <Heading backLine>Marvel cards</Heading>
+                <Heading level={2}>Collect your est five</Heading>
+              </div>
+              <div className={styles.cardWrapper}>
+                {characters.map((el) => (
+                  <CharacterCard
+                    key={el.id}
+                    id={el.id}
+                    name={el.name}
+                    description={el.description}
+                    path={el.thumbnail.path}
+                    humanName={el.humanName}
+                    isLike={el.isLike}
+                    onLikeCard={onLikeCard}
+                    onGoToBiography={onGoToBiography}
+                  />
+                ))}
+              </div>
+            </Container>
+          </section>
+        </>
+      )}
+
+      <Footer />
+    </>
   );
 }
 

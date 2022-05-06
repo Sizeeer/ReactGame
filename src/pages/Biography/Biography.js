@@ -5,6 +5,7 @@ import { Heading } from "../../components/Heading";
 import { Text } from "../../components/Text";
 import { Button } from "../../components/Button/Button";
 import { Container } from "../../components/Container";
+import { useNavigate, useParams } from "react-router-dom";
 
 const BIO = {
   1011334: [
@@ -316,10 +317,13 @@ BiographyElement.propTypes = {
   }),
 };
 
-export const Biography = ({ id, onBackClick }) => {
+export const Biography = () => {
+  const navigate = useNavigate();
+  const { id } = useParams();
+
   const handleBackClick = useCallback(() => {
-    onBackClick();
-  }, [onBackClick]);
+    navigate(-1);
+  }, [navigate]);
 
   return (
     <section className={styles.biographySection}>

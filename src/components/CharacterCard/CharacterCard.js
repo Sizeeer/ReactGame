@@ -5,6 +5,7 @@ import cn from "classnames";
 import styles from "./CharacterCard.module.scss";
 import { Heading } from "../Heading";
 import { Text } from "../Text";
+import { Link } from "react-router-dom";
 
 export const CharacterCard = ({
   id,
@@ -42,9 +43,7 @@ export const CharacterCard = ({
             <Like />
           </div>
           <div className={styles.readBio}>
-            <a href="#" onClick={() => onGoToBiography(id)}>
-              Read bio
-            </a>
+            <Link to={`/characters/${id}`}>Read bio</Link>
           </div>
         </div>
       </div>

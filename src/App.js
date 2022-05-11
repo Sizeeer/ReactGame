@@ -7,42 +7,29 @@ import { Main } from "./pages/Main";
 import { Contacts } from "./pages/Contacts";
 import { NotFound } from "./pages/NotFound";
 import { useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 const App = () => {
   const { hash, pathname } = useLocation();
 
-  const [isLoaded, setIsLoaded] = useState(false);
-
   useEffect(() => {
-    const load = () => {
-      setIsLoaded(true);
-    };
-
-    window.addEventListener("load", load);
-
-    return () => {
-      window.removeEventListener("load", load);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (isLoaded) {
-      if (hash) {
+    if (hash) {
+      const load = () => {
         const anchorElement = document.getElementById(hash.slice(1));
         if (anchorElement) {
-          setTimeout(() => {
-            anchorElement.scrollIntoView({
-              block: "center",
-              behavior: "smooth",
-            });
-          }, 0);
+          anchorElement.scrollIntoView({
+            block: "center",
+            behavior: "smooth",
+          });
         }
-      } else {
-        window.scrollTo(0, 0);
-      }
+      };
+
+      window.addEventListener("load", load, { once: true });
+    } else {
+      window.scrollTo(0, 0);
     }
-  }, [hash, pathname, isLoaded]);
+  }, [hash, pathname]);
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>

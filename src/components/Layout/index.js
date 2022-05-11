@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Header } from "../Header";
 import { Footer } from "../Footer";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation, useMatch } from "react-router-dom";
 import styles from "./Layout.module.scss";
 import { Container } from "../Container";
 
@@ -43,11 +43,16 @@ export const Layout = () => {
   return (
     <>
       <Header />
-      <div className={styles.container}>
-        <Container>
-          <Outlet />
-        </Container>
-      </div>
+      {onMainPage ? (
+        <Outlet />
+      ) : (
+        <div className={styles.container}>
+          <Container>
+            <Outlet />
+          </Container>
+        </div>
+      )}
+
       <Footer />
     </>
   );

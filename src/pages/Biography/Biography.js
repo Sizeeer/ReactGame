@@ -5,7 +5,8 @@ import { Heading } from "../../components/Heading";
 import { Text } from "../../components/Text";
 import { Button } from "../../components/Button/Button";
 import { Container } from "../../components/Container";
-import { useNavigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { AnchorLink } from "../../components/AnchorLink";
 
 const BIO = {
   1011334: [
@@ -325,6 +326,10 @@ export const Biography = () => {
     navigate(-1);
   }, [navigate]);
 
+  if (!BIO[id]) {
+    return <Navigate to="/characters" />;
+  }
+
   return (
     <section className={styles.biographySection}>
       <Container className={styles.container}>
@@ -334,6 +339,9 @@ export const Biography = () => {
         {BIO[id].map((el, i) => (
           <BiographyElement key={i} el={el} />
         ))}
+        <AnchorLink level={3} href="#tnx">
+          Спасибо за внимание!
+        </AnchorLink>
       </Container>
     </section>
   );

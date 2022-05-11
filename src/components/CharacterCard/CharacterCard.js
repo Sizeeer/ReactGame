@@ -15,7 +15,6 @@ export const CharacterCard = ({
   humanName,
   isLike,
   onLikeCard,
-  onGoToBiography,
 }) => {
   const handleLike = () => {
     onLikeCard(id);
@@ -59,5 +58,4 @@ CharacterCard.propTypes = {
   humanName: PropTypes.string,
   isLike: PropTypes.bool,
   onLikeCard: PropTypes.func,
-  onGoToBiography: PropTypes.func,
 };

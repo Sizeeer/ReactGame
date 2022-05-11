@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from "react";
 import { CHARACTERS } from "../../constants/characters";
 import styles from "./Characters.module.scss";
-import { Heading } from "../../components/Heading";
 import { CharacterCard } from "../../components/CharacterCard/CharacterCard";
+import { AnchorLink } from "../../components/AnchorLink";
 
 export const Characters = () => {
   const [characters, setCharacters] = useState(CHARACTERS);
@@ -18,7 +18,9 @@ export const Characters = () => {
   }, []);
   return (
     <>
-      <Heading level={1}>Characters</Heading>
+      <AnchorLink href="#Characters" headingLevel={1}>
+        Characters
+      </AnchorLink>
       <div className={styles.cardWrapper}>
         {characters.map((el) => (
           <CharacterCard

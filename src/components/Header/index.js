@@ -2,7 +2,26 @@ import React, { useRef, useEffect } from "react";
 import styles from "./Header.module.scss";
 import logoSrc from "../../assets/logo.png";
 import { Container } from "../Container";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+
+const MENU = [
+  {
+    path: "/",
+    text: "Main",
+  },
+  {
+    path: "/characters",
+    text: "Characters",
+  },
+  {
+    path: "/about-game",
+    text: "AboutGame",
+  },
+  {
+    path: "/contacts",
+    text: "Contacts",
+  },
+];
 
 export const Header = () => {
   const headerRef = useRef(null);
@@ -31,18 +50,18 @@ export const Header = () => {
           </Link>
 
           <ul className={styles.nav}>
-            <li>
-              <Link to="/">Main</Link>
-            </li>
-            <li>
-              <Link to="/characters">Characters</Link>
-            </li>
-            <li>
-              <Link to="/about-game">AboutGame</Link>
-            </li>
-            <li>
-              <Link to="/contacts">Contacts</Link>
-            </li>
+            {MENU.map((el) => (
+              <li>
+                <NavLink
+                  to={el.path}
+                  className={({ isActive }) => {
+                    return isActive ? styles.activeLink : null;
+                  }}
+                >
+                  {el.text}
+                </NavLink>
+              </li>
+            ))}
           </ul>
         </Container>
       </div>

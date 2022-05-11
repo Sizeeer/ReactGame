@@ -1,0 +1,17 @@
+.root {
+  display: flex;
+  align-items: center;
+
+  & svg {
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  &:hover svg {
+    opacity: 1;
+  }
+}
+
+.linkIcon {
+  width: 50px;
+}

@@ -18,7 +18,7 @@ export const Characters = () => {
   }, []);
   return (
     <>
-      <AnchorLink href="#Characters" headingLevel={1}>
+      <AnchorLink id="characters" headingLevel={1}>
         Characters
       </AnchorLink>
       <div className={styles.cardWrapper}>

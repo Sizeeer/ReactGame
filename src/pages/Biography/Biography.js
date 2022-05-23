@@ -339,7 +339,7 @@ export const Biography = () => {
         {BIO[id].map((el, i) => (
           <BiographyElement key={i} el={el} />
         ))}
-        <AnchorLink level={3} href="#tnx">
+        <AnchorLink level={3} id="tnx">
           Спасибо за внимание!
         </AnchorLink>
       </Container>

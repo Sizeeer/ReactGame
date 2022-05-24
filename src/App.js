@@ -8,6 +8,7 @@ import { Contacts } from "./pages/Contacts";
 import { NotFound } from "./pages/NotFound";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { AuthPage } from "./pages/Auth";
 
 const App = () => {
   const { hash, pathname } = useLocation();
@@ -40,6 +41,7 @@ const App = () => {
         <Route path="contacts" element={<Contacts />} />
         <Route path="*" element={<NotFound />} />
       </Route>
+      <Route path="/auth" element={<AuthPage />} />
     </Routes>
   );
 };
